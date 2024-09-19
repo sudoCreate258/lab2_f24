@@ -48,10 +48,12 @@ def encrypt(email="abc012"):
         output = "Error"
         # TODO: fix line above, use string formatting for a specific error message
         print(output)
+        return output 
     except AlphaNumericError as e:
         output = "Error"
         # TODO: fix line above, use string formatting for a specific error message
         print(output)
+        return output
 
 def decrypt(email="def345"):
     pass
