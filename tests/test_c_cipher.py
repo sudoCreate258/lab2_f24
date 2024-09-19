@@ -9,6 +9,14 @@ def test_kick_the_back_tires():
   with pytest.raises(SizeConstraintError):
     encrypt("abcd123")
 
+def test_size_constraint_error():
+    with pytest.raises(SizeConstraintError, match="Error."):
+        encrypt("abcd123")
+
+def test_alphanumeric_error():
+    with pytest.raises(AlphaNumericError, match="Error"):
+        encrypt("abcd123")
+
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
 #def test_encrypt_valid_email():
 #    assert encrypt("abc123") == "def456"
