@@ -81,7 +81,9 @@ def decrypt(email="def345"):
         output += "Email must have 3 letters followed by 3 digits."
         logging.info(output)
         return output   
-        
+
+    # TODO: apply the encrypt pseudocode but shift down 3
+    
     # keep all updates in the retVal (str) variablei
     # i.e.,
     #    email_str = " some string updates here "
