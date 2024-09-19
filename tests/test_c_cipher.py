@@ -5,7 +5,7 @@ from src.c_cipher import encrypt
 def test_kick_the_back_tires():
     assert encrypt() == 'dbc012'
 
-'''def test_length_error(caplog):
+def test_length_error(caplog):
     """Test that a length error message is logged for invalid email size"""
     with caplog.at_level(logging.INFO):
         result = encrypt("abcd1234")
@@ -26,7 +26,7 @@ def test_successful_encryption(caplog):
     result = encrypt("abc012")
     assert result == "def345"
     assert "def345" not in caplog.text  # Ensure no logging output for successful encryption
-'''
+
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
 #def test_encrypt_valid_email():
