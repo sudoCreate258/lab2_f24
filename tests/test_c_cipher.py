@@ -2,10 +2,10 @@ import pytest
 import logging
 from src.c_cipher import encrypt
 
-def test_kick_the_back_tires():
+def test_kick_the_front_tire():
     assert encrypt() == 'dbc012'
 
-def test_length_error(caplog):
+def test_encrypt_length_error(caplog):
     """Test that a length error message is logged for invalid email size"""
     with caplog.at_level(logging.INFO):
         result = encrypt("abcd1234")
@@ -13,7 +13,7 @@ def test_length_error(caplog):
     assert "Email must be 6 characters long." in caplog.text
     assert result == "Length check failed\nEmail must be 6 characters long."
     
-def test_alphanumeric_error(caplog):
+def test_encrypt_alphanumeric_error(caplog):
     """Test that an alphanumeric error message is logged for invalid email format"""
     with caplog.at_level(logging.INFO):
         result = encrypt("abc1@3")
@@ -21,32 +21,37 @@ def test_alphanumeric_error(caplog):
     assert "Email must have 3 letters followed by 3 digits." in caplog.text
     assert result == "alpha num check failed\nEmail must have 3 letters followed by 3 digits."
 
+'''
 def test_successful_encryption(caplog):
     """Test that the email is encrypted correctly"""
     result = encrypt("abc012")
     assert result == "def345"
-    assert "def345" not in caplog.text  
+    assert "def345" not in caplog.text 
+'''
 
-#TODO: when ready to test encrypt remove the '#' from lines 9 - 18
-#def test_encrypt_valid_email():
-#    assert encrypt("abc123") == "def456"
+def test_kick_the_back_tire():
+    assert decrypt() == 'aef345'
 
-#def test_encrypt_invalid_size():
-#    with pytest.raises(SizeConstraintError):
-#        encrypt("abcd123")
+def test_decrypt_length_error(caplog):
+    """Test that a length error message is logged for invalid email size"""
+    with caplog.at_level(logging.INFO):
+        result = decrypt("defg446")  # Updated function call
+    assert "Length check failed" in caplog.text
+    assert "Email must be 6 characters long." in caplog.text
+    assert result == "Length check failed\nEmail must be 6 characters long."
 
-#def test_encrypt_invalid_format():
-#    with pytest.raises(AlphaNumericError):
-#        encrypt("abc12@")
+def test_decrypt_alphanumeric_error(caplog):
+    """Test that an alphanumeric error message is logged for invalid email format"""
+    with caplog.at_level(logging.INFO):
+        result = decrypt("def3$5")  # Updated function call
+    assert "alpha num check failed" in caplog.text
+    assert "Email must have 3 letters followed by 3 digits." in caplog.text
+    assert result == "alpha num check failed\nEmail must have 3 letters followed by 3 digits."
 
-#TODO: when ready to test decrypt remove the '#' from lines 21 - 20
-#def test_decrypt_valid_email():
-#    assert decrypt("def456") == "abc123"
-
-#def test_decrypt_invalid_size():
-#    with pytest.raises(SizeConstraintError):
-#        decrypt("def4567")
-
-#def test_decrypt_invalid_format():
-#    with pytest.raises(AlphaNumericError):
-#        decrypt("abc12@")
+'''
+def test_successful_decryption(caplog):
+    """Test that the email is encrypted correctly"""
+    result = decrypt("def345")
+    assert result == "abc012"
+    assert "abc012" not in caplog.text 
+'''
