@@ -1,5 +1,25 @@
-import pytest
+import unittest
 from src.c_cipher import encrypt
+from src.exception import SizeConstraintError, AlphaNumericError
+
+class TestEncryptFunction(unittest.TestCase):
+
+    def test_size_constraint_error(self):
+        """Test that SizeConstraintError is raised for invalid email size."""
+        with self.assertRaises(SizeConstraintError) as context:
+            encrypt("abcd1234")
+        self.assertEqual(str(context.exception), "Email must be 6 characters long.")
+
+    def test_alphanumeric_error(self):
+        """Test that AlphaNumericError is raised for invalid email format."""
+        with self.assertRaises(AlphaNumericError) as context:
+            encrypt("abcd123")  # This should raise AlphaNumericError
+        self.assertEqual(str(context.exception), "Email must have 3 letters followed by 3 digits.")
+
+
+'''import pytest
+from src.c_cipher import encrypt
+
 
 def test_kick_the_back_tires():
     assert encrypt() == 'dbc012'
@@ -12,7 +32,7 @@ def test_size_constraint_error(capsys):
 def test_alphanumeric_error(capsys):
     """Test that AlphaNumericError is raised for invalid email format."""
     with pytest.raises(AlphaNumericError):
-        encrypt("abcde1")   
+        encrypt("abcde1")   '''
 
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
