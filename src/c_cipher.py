@@ -1,4 +1,6 @@
-from src.exceptions import SizeConstraintError, AlphaNumericError
+import logging 
+logging.basicConfig(level=logging.ERROR)
+
 
 def encrypt(email="abc012"):
     """
@@ -21,8 +23,9 @@ def encrypt(email="abc012"):
         print(len_flag)
         print(email)
         if len_flag:
-            raise SizeConstraintError("Email must be 6 characters long.")
-        '''if anum_flag:
+            logging.error("Email must be 6 characters long.")
+            return None        '''if anum_flag:
+            
             raise AlphaNumericError("Email must have 3 letters followed by 3 digits.")
 
         # TODO: fix line below, process our string into a list
