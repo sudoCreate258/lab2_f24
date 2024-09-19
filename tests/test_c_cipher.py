@@ -5,6 +5,7 @@ from src.exceptions import SizeConstraintError, AlphaNumericError
 def test_kick_the_tires():
   assert encrypt() == "dbc012"
 
+#TODO: when ready to test encrypt remove the '#' from lines 9 - 18
 #def test_encrypt_valid_email():
 #    assert encrypt("abc123") == "def456"
 
@@ -16,6 +17,7 @@ def test_kick_the_tires():
 #    with pytest.raises(AlphaNumericError):
 #        encrypt("abc12@")
 
+#TODO: when ready to test decrypt remove the '#' from lines 21 - 20
 #def test_decrypt_valid_email():
 #    assert decrypt("def456") == "abc123"
 
