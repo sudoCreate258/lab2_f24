@@ -27,7 +27,7 @@ def encrypt(email="abc012"):
         output += "Email must be 6 characters long."
         logging.info(output)
         return output        
-    if num_flag:
+    if anum_flag:
         output = "alpha num check failed\n"
         output += "Email must have 3 letters followed by 3 digits."
         logging.info(output)
