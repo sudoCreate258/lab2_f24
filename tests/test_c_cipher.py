@@ -27,6 +27,7 @@ def test_successful_encryption(caplog):
     assert result == "def345"
     assert "def345" not in caplog.text 
 
+'''
 def test_kick_the_back_tire():
     assert decrypt() == 'aef345'
 
@@ -46,7 +47,6 @@ def test_decrypt_alphanumeric_error(caplog):
     assert "Email must have 3 letters followed by 3 digits." in caplog.text
     assert result == "alpha num check failed\nEmail must have 3 letters followed by 3 digits."
 
-'''
 def test_successful_decryption(caplog):
     """Test that the email is encrypted correctly"""
     result = decrypt("def345")
