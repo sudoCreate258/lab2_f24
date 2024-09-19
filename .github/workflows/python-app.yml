@@ -1,16 +1,16 @@
-name: Run Tests
+name: Python application
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
         python-version: '3.9'
 
@@ -21,11 +21,4 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest --disable-warnings --tb=short > results.txt || true
-        cat results.txt
-
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: results.txt
+        pytest --disable-warnings --tb=short
