@@ -30,10 +30,10 @@ def encrypt(email="abc012"):
         
         # TODO: fix line(s) below, update EACH element's ASCII value + 3
         new_ascii = ord(email_lst[0]) + 3
-        email_lst[0] = chr(new_ascii)
+        email_lst[0]2 = chr(new_ascii)
         
-        # TODO: fix line below, convert list into a string
-        email_str = "dbc012"'''
+        # TODO: fix line below, convert list into a string'''
+        email_str = "dbc012"
         retVal = email_str
 
         return retVal 
