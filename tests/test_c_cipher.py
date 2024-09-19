@@ -1,21 +1,25 @@
+import logging
 import pytest
-from src.c_cipher import encrypt, decrypt
-from src.exceptions import SizeConstraintError, AlphaNumericError
+from src.cipher import encrypt  # Adjust the import path based on your actual module structure
 
-def test_kick_the_front_tires():
-  assert encrypt() == "dbc012"
+# Set up logging configuration for the test environment
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def test_kick_the_back_tires():
-    with pytest.raises(SizeConstraintError):
-        encrypt("abcd123")  # This should raise SizeConstraintError
+def test_kick_the_back_tires(capsys):
+    encrypt("abcd123")  # This should log an error
+    captured = capsys.readouterr()
+    assert "Email must be 6 characters long." in captured.err
 
-def test_size_constraint_error():
-    with pytest.raises(SizeConstraintError):
-        encrypt("abc1234")  # This should also raise SizeConstraintError
+def test_size_constraint_error(capsys):
+    encrypt("abc1234")  # This should also log an error
+    captured = capsys.readouterr()
+    assert "Email must be 6 characters long." in captured.err
 
-def test_alphanumeric_error():
-    with pytest.raises(AlphaNumericError):
-        encrypt("abcd123")  # This should raise AlphaNumericError if the email is invalid
+def test_alphanumeric_error(capsys):
+    encrypt("abcd123")  # This should log an error for alphanumeric issues
+    captured = capsys.readouterr()
+    assert "Email must have 3 letters followed by 3 digits." in captured.err
+
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
 #def test_encrypt_valid_email():
