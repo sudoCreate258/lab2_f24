@@ -16,7 +16,7 @@ def test_length_error(caplog):
 def test_alphanumeric_error(caplog):
     """Test that an alphanumeric error message is logged for invalid email format"""
     with caplog.at_level(logging.INFO):
-        result = encrypt("abcd123")
+        result = encrypt("abc1@3")
     assert "alpha num check failed" in caplog.text
     assert "Email must have 3 letters followed by 3 digits." in caplog.text
     assert result == "alpha num check failed\nEmail must have 3 letters followed by 3 digits."
