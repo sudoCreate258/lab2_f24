@@ -24,7 +24,9 @@ def encrypt(email="abc012"):
         print(email)
         if len_flag:
             logging.error("Email must be 6 characters long.")
-            return None        '''if anum_flag:
+            return None        
+            
+        '''if anum_flag:
             
             raise AlphaNumericError("Email must have 3 letters followed by 3 digits.")
 
