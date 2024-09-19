@@ -75,7 +75,7 @@ def encrypt(email="abc012"):
         output = "Error"
         # TODO: fix line above, use string formatting for a specific error message
         print(output)
+"""
 
 def decrypt(email="def345"):
     pass
-"""
