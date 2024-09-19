@@ -78,4 +78,4 @@ def encrypt(email="abc012"):
 
 def decrypt(email="def345"):
     pass
-'''
+"""
