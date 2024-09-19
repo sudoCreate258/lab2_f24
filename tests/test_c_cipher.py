@@ -34,7 +34,7 @@ def test_kick_the_back_tire():
 def test_decrypt_length_error(caplog):
     """Test that a length error message is logged for invalid email size"""
     with caplog.at_level(logging.INFO):
-        result = decrypt("defg446")  # Updated function call
+        result = decrypt("defg456")  # Updated function call
     assert "Length check failed" in caplog.text
     assert "Email must be 6 characters long." in caplog.text
     assert result == "Length check failed\nEmail must be 6 characters long."
@@ -42,7 +42,7 @@ def test_decrypt_length_error(caplog):
 def test_decrypt_alphanumeric_error(caplog):
     """Test that an alphanumeric error message is logged for invalid email format"""
     with caplog.at_level(logging.INFO):
-        result = decrypt("def3$5")  # Updated function call
+        result = decrypt("def4%6")  # Updated function call
     assert "alpha num check failed" in caplog.text
     assert "Email must have 3 letters followed by 3 digits." in caplog.text
     assert result == "alpha num check failed\nEmail must have 3 letters followed by 3 digits."
