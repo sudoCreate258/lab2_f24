@@ -6,16 +6,16 @@ def test_kick_the_tires():
   assert encrypt() == "dbc012"
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
-#def test_encrypt_valid_email():
-#    assert encrypt("abc123") == "def456"
+def test_encrypt_valid_email():
+    assert encrypt("abc123") == "def456"
 
 #def test_encrypt_invalid_size():
-#    with pytest.raises(SizeConstraintError):
-#        encrypt("abcd123")
+    with pytest.raises(SizeConstraintError):
+        encrypt("abcd123")
 
 #def test_encrypt_invalid_format():
-#    with pytest.raises(AlphaNumericError):
-#        encrypt("abc12@")
+    with pytest.raises(AlphaNumericError):
+        encrypt("abc12@")
 
 #TODO: when ready to test decrypt remove the '#' from lines 21 - 20
 #def test_decrypt_valid_email():
