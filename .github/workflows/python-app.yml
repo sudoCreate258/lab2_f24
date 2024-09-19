@@ -1,4 +1,4 @@
-name: Python CI
+=name: Python CI
 
 on:
   push:
@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,4 +28,11 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest
+          pytest --junitxml=tests/test-results.xml  # Generate test results in XML format
+
+      - name: Upload test results
+        if: always()  # Ensure this step runs even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: tests/test-results.xml
