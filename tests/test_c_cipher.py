@@ -12,7 +12,7 @@ def test_length_error(caplog):
     assert "Length check failed" in caplog.text
     assert "Email must be 6 characters long." in caplog.text
     assert result == "Length check failed\nEmail must be 6 characters long."
-'''    
+    
 def test_alphanumeric_error(caplog):
     """Test that an alphanumeric error message is logged for invalid email format"""
     with caplog.at_level(logging.INFO):
@@ -26,7 +26,6 @@ def test_successful_encryption(caplog):
     result = encrypt("abc012")
     assert result == "def345"
     assert "def345" not in caplog.text  # Ensure no logging output for successful encryption
-'''
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
 #def test_encrypt_valid_email():
