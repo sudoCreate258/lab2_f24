@@ -16,17 +16,18 @@ def encrypt(email="abc012"):
     """
     try:
         len_flag = len(email) != 6
-        anum_flag = email[:3] != 'abc' and email[3:] != '012' 
+        anum_flag = email[:3] != 'abc' or email[3:] != '012' 
         # TODO: fix line above, what built in functions can we implement?
         
         print('len_flag',len_flag,email)
         if len_flag:
-            print("Length check passed")
+            print("Length check failed",len(email))
             raise SizeConstraintError("Email must be 6 characters long.")
             
         print('anum_flag',anum_flag,email[:3],email[3:])
         if anum_flag:
-            print("Length check passed")
+            print("alphanum check failed")
+            print(email[:3].isalpha(), email[3:].isdecimal())
             raise AlphaNumericError("Email must have 3 letters followed by 3 digits.")
 
         # TODO: fix line below, process our string into a list
