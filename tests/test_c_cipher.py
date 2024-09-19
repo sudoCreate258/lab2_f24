@@ -2,6 +2,15 @@ import pytest
 import logging
 from src.c_cipher import encrypt
 
+def test_kick_the_back_tires():
+    assert encrypt() == 'dbc012'
+
+def test_successful_encryption(caplog):
+    """Test that the email is encrypted correctly"""
+    result = encrypt("abc012")
+    assert result == "def345"
+    assert "def345" not in caplog.text 
+    
 def test_length_error(caplog):
     """Test that a length error message is logged for invalid email size"""
     with caplog.at_level(logging.INFO):
@@ -17,28 +26,6 @@ def test_alphanumeric_error(caplog):
     assert "alpha num check failed" in caplog.text
     assert "Email must have 3 letters followed by 3 digits." in caplog.text
     assert result == "alpha num check failed\nEmail must have 3 letters followed by 3 digits."
-
-def test_successful_encryption(caplog):
-    """Test that the email is encrypted correctly"""
-    result = encrypt("abc012")
-    assert result == "def345"
-    assert "def345" not in caplog.text  # Ensure no logging output for successful encryption
-
-def test_kick_the_back_tires():
-    assert encrypt() == 'dbc012'
-
-'''
-def test
-
-def test_size_constraint_error(capsys):
-    """Test that SizeConstraintError is raised for invalid email size."""
-    with pytest.raises(SizeConstraintError, match="Email must be 6 characters long."):
-        encrypt("abcd1234")  
-
-def test_alphanumeric_error(capsys):
-    """Test that AlphaNumericError is raised for invalid email format."""
-    with pytest.raises(AlphaNumericError):
-        encrypt("abcde1")   '''
 
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
