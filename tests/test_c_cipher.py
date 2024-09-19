@@ -9,11 +9,11 @@ def test_kick_the_tires():
 def test_encrypt_valid_email():
     assert encrypt("abc123") == "def456"
 
-#def test_encrypt_invalid_size():
+def test_encrypt_invalid_size():
     with pytest.raises(SizeConstraintError):
         encrypt("abcd123")
 
-#def test_encrypt_invalid_format():
+def test_encrypt_invalid_format():
     with pytest.raises(AlphaNumericError):
         encrypt("abc12@")
 
