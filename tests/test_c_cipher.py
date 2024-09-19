@@ -1,21 +1,18 @@
 import pytest
 from src.c_cipher import encrypt
 
-def test_kick_the_back_tires(capsys):
-    encrypt("abcd123")
-    captured = capsys.readouterr()
-    assert "Email must be 6 characters long." in captured.err
+def test_kick_the_back_tires():
+    assert encrypt() == 'dbc012'
 
 def test_size_constraint_error(capsys):
-    encrypt("abc1234")
-    captured = capsys.readouterr()
-    assert "Email must be 6 characters long." in captured.err
+    """Test that SizeConstraintError is raised for invalid email size."""
+    with pytest.raises(SizeConstraintError, match="Email must be 6 characters long."):
+        encrypt("abcd1234")  
 
 def test_alphanumeric_error(capsys):
-    encrypt("abcd123")
-    captured = capsys.readouterr()
-    assert "Email must have 3 letters followed by 3 digits." in captured.err
-
+    """Test that AlphaNumericError is raised for invalid email format."""
+    with pytest.raises(AlphaNumericError):
+        encrypt("abcde1")   
 
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
