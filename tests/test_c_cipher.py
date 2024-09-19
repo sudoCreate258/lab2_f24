@@ -1,5 +1,5 @@
 import pytest
-from src.cipher import encrypt
+from src.c_cipher import encrypt
 
 def test_kick_the_back_tires(capsys):
     encrypt("abcd123")
