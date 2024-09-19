@@ -1,6 +1,6 @@
 import unittest
 from src.c_cipher import encrypt
-from src.exception import SizeConstraintError, AlphaNumericError
+from src.exceptions import SizeConstraintError, AlphaNumericError
 
 class TestEncryptFunction(unittest.TestCase):
 
