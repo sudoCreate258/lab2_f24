@@ -22,8 +22,8 @@ def encrypt(email="abc012"):
         print(email)
         if len_flag:
             raise SizeConstraintError("Email must be 6 characters long.")
-        #if anum_flag:
-        #    raise AlphaNumericError("Email must have 3 letters followed by 3 digits.")
+        '''if anum_flag:
+            raise AlphaNumericError("Email must have 3 letters followed by 3 digits.")
 
         # TODO: fix line below, process our string into a list
         email_lst = ["a", "b", "c", "0", "1", "2"]
@@ -33,7 +33,7 @@ def encrypt(email="abc012"):
         email_lst[0] = chr(new_ascii)
         
         # TODO: fix line below, convert list into a string
-        email_str = "dbc012"
+        email_str = "dbc012"'''
         retVal = email_str
 
         return retVal 
