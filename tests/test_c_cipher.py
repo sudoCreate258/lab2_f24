@@ -1,24 +1,21 @@
-import logging
 import pytest
-from src.c_cipher import encrypt  # Adjust the import path based on your actual module structure
-
-# Set up logging configuration for the test environment
-logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+from src.cipher import encrypt
 
 def test_kick_the_back_tires(capsys):
-    encrypt("abcd123")  # This should log an error
+    encrypt("abcd123")
     captured = capsys.readouterr()
     assert "Email must be 6 characters long." in captured.err
 
 def test_size_constraint_error(capsys):
-    encrypt("abc1234")  # This should also log an error
+    encrypt("abc1234")
     captured = capsys.readouterr()
     assert "Email must be 6 characters long." in captured.err
 
 def test_alphanumeric_error(capsys):
-    encrypt("abcd123")  # This should log an error for alphanumeric issues
+    encrypt("abcd123")
     captured = capsys.readouterr()
     assert "Email must have 3 letters followed by 3 digits." in captured.err
+
 
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
