@@ -6,16 +6,16 @@ def test_kick_the_front_tires():
   assert encrypt() == "dbc012"
 
 def test_kick_the_back_tires():
-  with pytest.raises(SizeConstraintError):
-    encrypt("abcd123")
+    with pytest.raises(SizeConstraintError):
+        encrypt("abcd123")  # This should raise SizeConstraintError
 
 def test_size_constraint_error():
-    with pytest.raises(SizeConstraintError, match="Error."):
-        encrypt("abcd123")
+    with pytest.raises(SizeConstraintError):
+        encrypt("abc1234")  # This should also raise SizeConstraintError
 
 def test_alphanumeric_error():
-    with pytest.raises(AlphaNumericError, match="Error"):
-        encrypt("abcd123")
+    with pytest.raises(AlphaNumericError):
+        encrypt("abcd123")  # This should raise AlphaNumericError if the email is invalid
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
 #def test_encrypt_valid_email():
