@@ -21,7 +21,7 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover -s tests -p "*.py" > results.txt || true
+        pytest --disable-warnings --tb=short > results.txt || true
         cat results.txt
 
     - name: Upload test results
