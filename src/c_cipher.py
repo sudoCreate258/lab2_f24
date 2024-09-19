@@ -1,6 +1,19 @@
 from src.exceptions import SizeConstraintError, AlphaNumericError
 
 def encrypt(email="abc012"):
+  """
+  TODO: What is the objective? 
+
+  Args:
+    TODO: what argument data types are expected? (i.e., email)
+
+  Returns:
+    TODO: what data types are being returned?   
+
+   Raises:
+      SizeConstraintError: If the email is not exactly 6 characters long.
+      AlphaNumericError: If the email does not consist of 3 letters followed by 3 digits.
+    """
   try:
     len_flag = len(email) != 6
     anum_flag = email[:3] != 'abc' and email[3:] != '012' 
