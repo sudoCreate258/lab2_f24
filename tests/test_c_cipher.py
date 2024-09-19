@@ -1,6 +1,6 @@
 import logging
 import pytest
-from src.cipher import encrypt  # Adjust the import path based on your actual module structure
+from src.c_cipher import encrypt  # Adjust the import path based on your actual module structure
 
 # Set up logging configuration for the test environment
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
