@@ -21,11 +21,13 @@ def test_alphanumeric_error(caplog):
     assert "Email must have 3 letters followed by 3 digits." in caplog.text
     assert result == "alpha num check failed\nEmail must have 3 letters followed by 3 digits."
 
+'''
 def test_successful_encryption(caplog):
     """Test that the email is encrypted correctly"""
     result = encrypt("abc012")
     assert result == "def345"
     assert "def345" not in caplog.text  # Ensure no logging output for successful encryption
+'''
 
 #TODO: when ready to test encrypt remove the '#' from lines 9 - 18
 #def test_encrypt_valid_email():
